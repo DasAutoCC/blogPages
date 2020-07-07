@@ -1,0 +1,325 @@
+/*通用样式*/
+*{
+	margin: 0; 
+	padding: 0;
+}
+html,body{
+	width: 100%;
+	min-width: 980px;
+}
+/*网页背景*/
+body{
+	background-color: #d1d2d4;
+	min-height: 900px;
+}
+/*开局遮挡div*/
+.index{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 1000;
+}
+/*遮罩div灰色背景*/
+.whiteBackGround{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #d1d2d4;
+	z-index: -1000;
+}
+/*动画效果都在这*/
+@keyframes indexDivFrames{
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@-webkit-keyframes indexDivFrames{
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@keyframes spanFrames{
+	0% {opacity: 0;}
+	50%{opacity: 0.5; }
+	100% {opacity: 1; left: 500px;}
+}
+@keyframes buttonFrames{
+	0% {opacity: 0;}
+	50%{opacity: 0.5; }
+	100% {opacity: 1; left: 500px;}	
+}
+@keyframes hiddenIndexFrames{
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+/*包含图片的div*/
+.indexDiv{
+	margin: 0 auto;
+	text-align: left;
+	background-color: white;
+	animation: indexDivFrames 2s;
+	-webkit-animation: indexDivFrames 3s;
+	-moz-animation: indexDivFrames 3s;
+	min-width: 980px;
+	transition: opacity 2s;
+}
+/*隐藏遮罩div的后期动画 用来让js动态调用的*/
+.hiddenIndex{
+	animation: hiddenIndexFrames 2s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+}
+/*遮罩div内部image图片*/
+#indexDivImage{
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+/*文字动画加样式*/
+#indexDivSpan{
+	position: fixed;
+	top: 180px;
+	left: 200px;
+	font-size: 55px;
+	opacity: 0;
+	animation: spanFrames 2s;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+}
+#indexDivSpan1{
+	position: fixed;
+	top: 250px;
+	left: 200px;
+	font-size: 55px;
+	opacity: 0;
+	animation: spanFrames 2s;
+	animation-delay: 1.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+}
+#indexDivSpan2{
+	position: fixed;
+	top: 320px;
+	left: 200px;
+	font-size: 55px;
+	opacity: 0;
+	animation: spanFrames 2s;
+	animation-delay: 2s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+}
+/*进入主页按钮样式及动画*/
+#intoButton{
+	position: fixed;
+	top: 390px;
+	left: 200px;
+	width: max-content;
+	opacity: 0;
+	animation: buttonFrames 2s;
+	animation-delay: 2.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+}
+#intoButtonIntence{
+	border: none;
+	background: none;
+	outline: none;
+	font-size: 55px;
+	color: slateblue;
+}
+/*active点击事件伪类，已经用js实现了，暂时放在这吧*/
+#intoButtonIntence:active{
+	
+}
+
+/*下面都是主页的样式*/
+.leftDiv{
+	padding-left: 350px;
+}
+
+/*头部隐藏图片div样式*/
+.hiddenHeader{
+	width: 100%;
+	height: 300px;
+	border-radius: 0 0px 10px 10px;
+	overflow: hidden;
+}
+
+/*头部fixed布局样式*/
+.test{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	min-width: 980px;
+	height: 300px;
+	transition: all 0.8s; 
+	text-align: center;
+	font-size: 48px;
+	overflow: hidden;
+	border-radius: 0 0px 10px 10px;
+}
+.fixedImage{
+	width: 100%;
+	height: 100%;
+	min-width: 980px;
+}
+.fixedImage2{
+	width: 100%;
+	height: 300px;
+	min-width: 980px;
+	margin-top: 0;
+}
+#loginArea{
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	width: 150px;
+	height: 20px;
+	font-size: 20px;
+}
+#userHeaderDiv{
+	width: 50px;
+	height: 50px;
+	float: left;
+	/* border: 1px solid blueviolet; */
+	border-radius: 30px;
+	overflow: hidden;
+}
+#userHeader{
+	width: 100%;
+	height: 100%;
+}
+#userNameDiv{
+	float: left;
+	height: 50px;
+	line-height: 50px;
+}
+
+/*缩小样式*/
+.low{
+	height: 100px;
+	overflow: hidden;
+}
+/*头部文本样式*/
+#innerTest{
+	margin-top: 70px;
+	transition: margin-top 0.8s; 
+	min-width: 980px;
+}
+.innerTestLower{
+	margin-top: 10px !important;
+}
+
+/*标题样式*/
+#text{
+	font-size: 48px;
+	transition: all 0.8s;
+}
+/*副标题样式*/
+#HeaderText{
+	transition: all 0.8s;
+	font-size: 20px;
+}
+
+/*标题缩小样式*/
+.textLower{
+	font-size: 28px !important;
+}
+/*副标题缩小样式*/
+.HeaderTextLower{
+	opacity: 0;
+}
+
+/*导航栏样式*/
+.navigationBar{
+	width: 1500px;
+	height: 80px;
+	background-color: white;
+	border-radius: 10px 10px 10px 10px;
+	margin: 10px  auto;
+}
+/*左侧fixed div样式*/
+.left{
+	position: fixed;
+	bottom: 50px;
+	left: 10px;
+	width: 9%;
+	height: 50px;
+	background-color: white;
+	border-radius: 8px;
+}
+/*右侧fixed div样式*/
+.right{
+	position: fixed;
+	bottom: 50px;
+	right: 10px;
+	width: 9%;
+	height: 50px;
+	background-color: white;
+	z-index: 100;
+	border-radius: 8px;
+}
+/*内容div样式*/
+.contentLater{
+	height: 2000px;
+	width: 1500px;
+	margin: 10px auto;
+	background-color: white;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	overflow-y: hidden;
+}
+/*内容区域样式，js动态将此类添加到div上*/
+.innerContentLeft{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	background-color: #d1d2d4;
+	height: 1000px;
+	width: 300px;
+	border-radius: 8px;
+	overflow-y: scroll;
+	font-size: 25px;
+	transition: all 0.8s;
+}
+/*没有用这个*/
+#innerContentLeftBottom{
+	width: 20px;
+	height: 20px;
+	background-color: #0000FF;
+	float: left;
+}
+
+
+/*隐藏列表div*/
+.innerContentLeftFrames{
+	margin-left: -310px;
+}
+
+.innerContentLeft::-webkit-scrollbar {
+        display: none;/*隐藏滚动条*/
+    }
+.innerContentRight{
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+	background-color: #d1d2d4;
+	height: 98%;
+	width: 1170px;
+	border-radius: 8px;
+	transition: all 0.8s;
+}
+/*右侧div变大*/
+.innerContentRightFrames{
+	width: 1480px;
+}
+#contentArea{
+	margin: 10px auto;
+	width: 1100px;
+	height: 800px;
+	background-color: white;
+}
+
+
+

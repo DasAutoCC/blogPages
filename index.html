@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="lib/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="./lib/js/jquery.main.js"></script>
+		<!-- 引入初始化脚本-->
+		<script src="js/init-index.js"></script>
+		<!-- 图标-->
+		<link rel="icon" href="img/icon.ico" type="images/x-ico" />
+		<title>博客</title>
+	</head>
+	<body>
+		<!--进入博客主页之前的遮罩图层div-->
+		<div class="index" >
+			<div class="whiteBackGround"></div>
+			<div class="indexDiv" id="indexDiv">
+				<img id="indexDivImage" src="img/08_eagle_b_resized.jpg" />
+			</div>
+			<span id="indexDivSpan" class="fuck">23:15&nbsp;PM</span>
+			<span id="indexDivSpan1" class="fuck">但愿人长久</span>
+			<span id="indexDivSpan2" class="fuck">夜深了，休息一下吧!</span>
+			<div id="intoButton"><button id="intoButtonIntence">进入主页&gt;</button> </div>
+		</div>
+		<!--/进入博客主页之前的遮罩图层div-->
+		
+		<!--主页头部被fixed div 遮挡的那个div-->
+		<div class="hiddenHeader">
+			<img class="fixedImage" src="img/09_deer_resized_WPS图片.jpg" />
+		</div>
+		<!--/主页头部被fixed div 遮挡的那个div-->
+		
+		<!--主页遮挡头部的div fixed布局，带有动画效果-->
+		<div class="test" style="background-image: url(img/04_horse_b_resized_WPS图片.jpg);">
+			<div id="innerTest">
+				<div id="loginArea">
+					<button id="loginButton">登录</button>
+					<button id="regButton">注册</button>
+				</div>
+				<span id="text">标题</span><br />
+				<span id="HeaderText">副标题</span>
+			</div>
+		</div>
+		<!--/主页遮挡头部的div fixed布局，带有动画效果-->
+		
+		<!--导航栏位置，但是没想好要放啥-->
+		<div class="navigationBar"></div>
+		<!--/导航栏位置，但是没想好要放啥-->
+		
+		<!-- 左侧fixed布局div，始终悬浮在左下方-->
+		<div class="left">
+			<button id="gasga" style="transition: all 0.8s;">收起博客列表</button>
+		</div>
+		<!-- /左侧fixed布局div，始终悬浮在左下方-->
+		
+		<!-- 内容区域-->
+		<div class="content" >
+			<!-- 内容区域中的左侧栏目-->
+			<div class="innerContentLeft">
+			</div>
+			<!-- /内容区域中的左侧栏目-->
+			
+			
+			<!-- 内容区域中的右侧栏目-->
+			<div class="innerContentRight">
+				<div id="contentArea"></div>
+			</div>
+			<!-- /内容区域中的右侧栏目-->
+		</div>
+		<!-- /内容区域-->
+		
+		<!-- 右侧fixed布局div，始终悬浮在右下方-->
+		<div class="right"></div>
+		<!-- /右侧fixed布局div，始终悬浮在右下方-->
+		
+		
+		<!--页面元素解析完成后执行的脚本-->
+		<script src="js/common-method.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>
