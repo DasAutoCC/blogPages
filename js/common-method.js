@@ -30,10 +30,10 @@ function hiddenBolgList(){
 	$(".innerContentLeft").toggleClass("innerContentLeftFrames");
 	$(".innerContentRight").toggleClass("innerContentRightFrames");
 	if(isHidden){
-		$("#gasga").html("收起博客列表");
+		$("#gasga").html("展开博客列表");
 		isHidden = false;
 	}else{
-		$("#gasga").html("展开博客列表");
+		$("#gasga").html("收起博客列表");
 		isHidden = true;
 	}
 }
