@@ -26,7 +26,13 @@ $("#intoButtonIntence").click(function(){
 $("#gasga").click(function(){
 	hiddenBolgList();
 });
-
+//博客列表
+$(".contentList").click(function(){
+	showContentBolgDetails();
+});
+$(".blogNavigationBarLeft").click(function(){
+	showContentBolgList();
+});
 
 
 //初始化主页面
@@ -42,4 +48,5 @@ $(document).ready(function(){
 		init();
 	},10000);
 });
+
 
