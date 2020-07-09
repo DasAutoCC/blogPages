@@ -1,6 +1,6 @@
 //省略开头动画
-$(".content").addClass("contentLater");
-$(".index").remove();
+//$(".content").addClass("contentLater");
+//$(".index").remove();
 
 //发送异步ajax请求获取博客列表
 function showBolgList(){
@@ -14,20 +14,40 @@ function showBolgList(){
 	})
 }
 //内容区域展示博客列表
-function showContentBolgList(){
+function showContentBolgList(currentPage){
+	var data ;
+	var currentList = $(".blogList1");
+	$.get("./json/contentBlog-list.json",{"currentPage":currentPage},function(back){
+		data = back.data;
+		for(i = 0 ; i<= 7&&i<=data.length-1;i++){
+			currentList.children().html(data[i].details);
+			currentList.children().attr("id",data[i].id)
+			currentList = currentList.next();
+		}
+		if(data.length<8){
+			for(i=0;i<8-data.length+2;i++){
+				currentList.css("display","none")
+				currentList = currentList.next();
+			}
+		}
+	})
 	//先填充内容
-	
-	$(".blogNavigationBar").css("display","none")
-	$(".blogContent").css("display","none")
-	$(".contentList").css("display","block")
+	$("#blogDetails").css("display","none");
+	$("#listBlog").css("display","block");
 }
 //内容区域展示博客详情
-function showContentBolgDetails(){
-	//先填充内容
+function showContentBolgDetails(BlogID){
 	
-	$(".blogNavigationBar").css("display","block")
-	$(".blogContent").css("display","block")
-	$(".contentList").css("display","none")
+	$(".blogContent").html(BlogID);
+	
+    $('body,html').animate({ 
+        scrollTop:200 
+    },700);
+	//先填充内容
+	$("#listBlog").css("display","none");
+	$("#blogDetails").css("display","block");
+	
+	
 }
 					
 
