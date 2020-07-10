@@ -1,0 +1,32 @@
+/bolg-list : 获取博客列表
+请求方式: post
+参数: {"PageNumber":"请求的页码"}
+响应数据: {"respCode":xxx,"message":"xxx","data":[{"id":"博客id","details":"博客需要显示的内容"},{"id":"博客id","details":"博客需要显示的内容"},.....]}
+返回数据格式包含响应码，信息，数据，数据为博客列表数组格式
+
+/bolg-list-all : 获取全部博客简易列表，仅包含博客标题
+请求方式: post
+参数: 无参数
+响应数据: {"respCode":xxx,"message":"xxx","data":["博客标题1","博客标题2",....]}
+返回数据格式包含响应码，信息，数据，数据为所有博客标题列表数组格式
+
+/bolg-details : 获取博客详细内容
+请求方式: post
+参数: {"blogId":"博客id"}
+响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":"markdown格式文本"}
+返回数据格式包含响应码，信息，数据，数据为markdown格式大文本格式
+
+/isLogin : 获取用户登陆状态信息
+请求方式: post
+参数: 无参数
+响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":{"userName":"用户名","userId":"用户id","declaration","用户签名"}}
+返回数据格式包含响应码，信息，数据，数据为用户基本信息
+
+/welcome : 获取当前时间的欢迎语
+请求方式: post
+参数: 无参数
+响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":"欢迎语"}
+返回数据格式包含响应码，信息，数据，数据为一段文本
+
+
+
