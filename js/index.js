@@ -28,7 +28,7 @@ $("#gasga").click(function(){
 });
 
 
-//博客列表点击事件，点击div时，获取当前div内a标签的id值传进"showContentBolgDetails(blogids)"方法内
+//博客列表点击事件，点击div时，获取当前div内a标签id值传进"showContentBolgDetails(blogids)"方法内
 $(".blogList1").click(function(){
 	var blogids = $(".blogList1").children().attr("id");
 	showContentBolgDetails(blogids);
