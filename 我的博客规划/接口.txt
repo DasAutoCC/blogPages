@@ -17,7 +17,7 @@
 /blog/addArticle
 是否需要认证:true
 请求方式: post
-参数: {"articleHeader":"标题","articleContent":"内容","isPublic":"是否公开"}
+参数: {"articleHeader":"标题","articleContent":"内容","isPublic":"是否公开","preview":"预览文字"}
 响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":null}
 返回数据格式包含响应码，信息，数据，数据为空，信息为参考信息
 是否实现: 已实现
@@ -25,16 +25,16 @@
 /bolg-list : 获取博客列表
 是否需要认证:false
 请求方式: post
-参数: {"PageNumber":"请求的页码"}
+参数: {"pageNumber":"请求的页码"}
 响应数据: {"respCode":xxx,"message":"xxx","data":[{"id":"博客id","header":"博客需要显示的内容","preview":"预览文字"},{"id":"博客id","header":"博客需要显示的内容","preview":"预览文字"},.....]}
 返回数据格式包含响应码，信息，数据，数据为博客列表数组格式
-是否实现: 未实现
+是否实现: 已实现
 
 /bolg-details : 获取博客详细内容
 是否需要认证:false
 请求方式: post
 参数: {"blogId":"博客id"}
-响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":"markdown格式文本"}
+响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":"article对象"}
 返回数据格式包含响应码，信息，数据，数据为markdown格式大文本格式
 是否实现: 未实现
 
