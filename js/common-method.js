@@ -1,6 +1,6 @@
 //省略开头动画
-//$(".content").addClass("contentLater");
-//$(".index").remove();
+// $(".content").addClass("contentLater");
+// $(".index").remove();
 
 
 
@@ -27,6 +27,7 @@ function showContentBolgList(PageNumber){
 			}
 		}
 	})
+
 	//再显示内容
 	$("#blogDetails").css("display","none");
 	$("#listBlog").css("display","block");
@@ -36,9 +37,12 @@ function showContentBolgDetails(BlogID){
 	//先填充内容
 	//参数为当前点击事件对象的id值，调用此方法的方法会将参数传过来的
 	//得到参数后就直接向服务器请求对应的内容然后填充到div中
-	$.get("./json/fff.json",{"blogId":BlogID},function(data){
-		$(".blogContent").html(BlogID);
-	})
+	// $.get("./json/fff.json",{"blogId":BlogID},function(data){
+	// 	
+	// 	$(".blogContent").html(BlogID);
+	// })
+	//这里用editor.md解析数据，然后填充到html
+	showMarkdown(BlogID);
 	//回到顶端代码
     $('body,html').animate({ 
         scrollTop:200 
@@ -71,6 +75,9 @@ function togglePage(pageForward){
 	}
 	//上面判断用户想要往第几页跳，这里直接执行
 	showContentBolgList(currentPage);
+	$('body,html').animate({
+	    scrollTop:200 
+	},700);
 }
 
 

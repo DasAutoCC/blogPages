@@ -14,7 +14,7 @@
 返回数据格式包含响应码，信息，数据，数据为用户基本信息
 是否实现: 已实现
 
-/blog/addArticle
+/blog/addArticle :添加文章发送数据接口
 是否需要认证:true
 请求方式: post
 参数: {"articleHeader":"标题","articleContent":"内容","isPublic":"是否公开","preview":"预览文字"}
@@ -36,7 +36,7 @@
 参数: {"blogId":"博客id"}
 响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":"article对象"}
 返回数据格式包含响应码，信息，数据，数据为markdown格式大文本格式
-是否实现: 未实现
+是否实现: 已实现
 
 /welcome : 获取当前时间的欢迎语
 是否需要认证:false
@@ -45,3 +45,4 @@
 响应数据: 响应数据: {"respCode":xxx,"message":"xxx","data":"欢迎语"}
 返回数据格式包含响应码，信息，数据，数据为一段文本
 是否实现: 未实现
+

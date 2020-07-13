@@ -17,7 +17,7 @@ body{
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	z-index: 1000;
+	z-index: 10001;
 }
 /*遮罩div灰色背景*/
 .whiteBackGround{
@@ -158,6 +158,7 @@ body{
 	font-size: 48px;
 	overflow: hidden;
 	border-radius: 0 0px 10px 10px;
+	z-index: 10000;
 }
 .fixedImage{
 	width: 100%;
