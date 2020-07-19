@@ -6,6 +6,7 @@
 
 //内容区域展示博客列表
 function showContentBolgList(PageNumber){
+	$("#markDownArea").html("<textarea  id='hahahdh' style='display: none;'></textarea>")
 	//先填充内容
 	var data ;
 	var currentList = $(".blogList1");
@@ -15,7 +16,7 @@ function showContentBolgList(PageNumber){
 	$.get("./json/contentBlog-list.json",{"PageNumber":PageNumber},function(back){
 		data = back.data;
 		for(i = 0 ; i<= 7&&i<=data.length-1;i++){
-			currentList.children().html(data[i].details);
+			currentList.children().html(data[i].details+"<br>"+"<span style='font-size: 18px;'>"+data[i].id+"</span>");
 			currentList.children().attr("id",data[i].id);
 			currentList = currentList.next();
 		}
@@ -25,6 +26,8 @@ function showContentBolgList(PageNumber){
 				currentList.css("display","none")
 				currentList = currentList.next();
 			}
+		}else{
+			$(".contentList").css("display","block");
 		}
 	})
 

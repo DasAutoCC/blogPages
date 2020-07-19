@@ -1,9 +1,6 @@
 function showMarkdown(){
-	alert("ceshi")
 	var testEditor;
 	$.get("./我的博客规划/test.md",function(data){
-		alert("请求成功")
-		// $("#hahahdh").val(data);
 		testEditor = editormd.markdownToHTML("markDownArea",{
 			  markdown        : data ,//+ "\r\n" + $("#append-test").text(),
 			  //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启

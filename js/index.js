@@ -85,7 +85,7 @@ $(document).ready(function(){
 		}
 		$("#indexDivSpan1").html(isLogin+",欢迎回来");
 		//渲染用户登录信息
-		$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src='./img/content-background.jpg'></div><div id='userNameDiv'>"+isLogin+"</div>");
+		$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src='./img/头像.jpg'></div><div id='userNameDiv'>"+isLogin+"</div>");
 	});
 
 	//欢迎语
@@ -99,7 +99,7 @@ $(document).ready(function(){
 	showContentBolgList(currentPage);
 	//将用户登录信息渲染到dom
 	if(isLogin !="朋友"){
-		$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src='./img/content-background.jpg'></div><div id='userNameDiv'>"+isLogin+"</div>");
+		$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src='./img/头像.jpg'></div><div id='userNameDiv'>"+isLogin+"</div>");
 	}
 	//定时进入主页事件
 	setTimeout(function(){
