@@ -10,7 +10,7 @@ var leftBlogList = null;
 
 
 //发送ajax请求获取博客列表，然后直接渲染到dom
-$.get("./json/bolg-list.json","",function(data){
+$.get("./blog-list-all","",function(data){
 	data = data.data;
 	var html;
 	for(var i = 0 ; i<data.length ; i++) {

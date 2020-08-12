@@ -5,7 +5,7 @@
 
 
 //内容区域展示博客列表
-function showContentBolgList(PageNumber){
+function showContentBolgList(pageNumber){
 	$("#markDownArea").html("<textarea  id='hahahdh' style='display: none;'></textarea>")
 	//先填充内容
 	var data ;
@@ -13,10 +13,10 @@ function showContentBolgList(PageNumber){
 	//这里发送ajax请求当前页面的数据，并且将获取到的内容
 	//的id依次修改到列表的每个div内的a标签上，每个a标签的id是博客的id
 	//用来当作获取博客详情的参数
-	$.get("./json/contentBlog-list.json",{"PageNumber":PageNumber},function(back){
+	$.get("./json/blog-list.json",{"PageNumber":pageNumber},function(back){
 		data = back.data;
 		for(i = 0 ; i<= 7&&i<=data.length-1;i++){
-			currentList.children().html(data[i].details+"<br>"+"<span style='font-size: 18px;'>"+data[i].id+"</span>");
+			currentList.children().html(data[i].header+"<br>"+"<span style='font-size: 18px;'>"+data[i].preview+"</span>");
 			currentList.children().attr("id",data[i].id);
 			currentList = currentList.next();
 		}
@@ -46,6 +46,7 @@ function showContentBolgDetails(BlogID){
 	// })
 	//这里用editor.md解析数据，然后填充到html
 	showMarkdown(BlogID);
+	showComment(BlogID);
 	//回到顶端代码
     $('body,html').animate({ 
         scrollTop:200 
