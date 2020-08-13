@@ -1,6 +1,6 @@
 function showMarkdown(blogId){
 	var testEditor;
-	$.get("./blog-details",{"blogId":blogId},function(data){
+	$.get("./json/blog-details.json",{"blogId":blogId},function(data){
 		testEditor = editormd.markdownToHTML("markDownArea",{
 			  markdown        : data.data.articleContent ,//+ "\r\n" + $("#append-test").text(),
 			  //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
@@ -27,7 +27,7 @@ function addCommentToDom(comment){
 	var htb = '</div>';
 	var commentHtml = '';
 	var repliesHtml = '';
-	var userName=comment.commentUser;
+	var userName=comment.nickName == null ? "游客"  :comment.nickName ;
 	var userContent = comment.commentContent;
 	commentHtml = '<div class="topLevelComment">'+userName+':'+userContent+'</div>';
 	html = htp + commentHtml;
@@ -36,7 +36,7 @@ function addCommentToDom(comment){
 		return html;
 	}
 	for(var i = 0 ;i < comment.replies.length ;i++){
-		repliesHtml = repliesHtml + '<div class="reply">'+comment.replies[i].commentUser+':'+comment.replies[i].commentContent+'</div>';
+		repliesHtml = repliesHtml + '<div class="reply">'+(comment.replies[i].nickName == null ? "游客" : comment.replies[i].nickName)+':'+comment.replies[i].commentContent+'</div>';
 	}
 	html = html + repliesHtml + htb;
 	return html;

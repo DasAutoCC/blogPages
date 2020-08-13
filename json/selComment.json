@@ -3,12 +3,41 @@
     "message": "请求成功",
     "data": [
         {
+            "commentId": 1,
+            "blogId": 1,
+            "commentUser": 1,
+            "replyFor": 0,
+            "starNum": 0,
+            "commentContent": "牛逼",
+            "user": null,
+            "replies": [],
+            "createTime": "2020-08-06T17:25:07.000+0000",
+            "isDelete": null,
+            "nickName": "盛世繁华",
+            "userHead": ""
+        },
+        {
+            "commentId": 2,
+            "blogId": 1,
+            "commentUser": 1,
+            "replyFor": 0,
+            "starNum": 0,
+            "commentContent": "厉害了我的哥",
+            "user": null,
+            "replies": [],
+            "createTime": "2020-08-06T17:25:29.000+0000",
+            "isDelete": null,
+            "nickName": "盛世繁华",
+            "userHead": ""
+        },
+        {
             "commentId": 3,
             "blogId": 12,
             "commentUser": 0,
             "replyFor": 0,
             "starNum": 0,
             "commentContent": "牛逼",
+            "user": null,
             "replies": [
                 {
                     "commentId": 4,
@@ -17,9 +46,12 @@
                     "replyFor": 3,
                     "starNum": 0,
                     "commentContent": "我是一条回复我是一条回复我是一条回复",
+                    "user": null,
                     "replies": null,
                     "createTime": "2020-08-12T13:29:49.000+0000",
-                    "isDelete": 0
+                    "isDelete": null,
+                    "nickName": null,
+                    "userHead": null
                 },
                 {
                     "commentId": 5,
@@ -28,9 +60,12 @@
                     "replyFor": 3,
                     "starNum": 0,
                     "commentContent": "你说啥呢",
+                    "user": null,
                     "replies": null,
                     "createTime": "2020-08-12T15:50:43.000+0000",
-                    "isDelete": 0
+                    "isDelete": null,
+                    "nickName": null,
+                    "userHead": null
                 },
                 {
                     "commentId": 6,
@@ -39,13 +74,18 @@
                     "replyFor": 4,
                     "starNum": 0,
                     "commentContent": "你说谁说啥呢",
+                    "user": null,
                     "replies": null,
                     "createTime": "2020-08-12T15:53:54.000+0000",
-                    "isDelete": 0
+                    "isDelete": null,
+                    "nickName": null,
+                    "userHead": null
                 }
             ],
             "createTime": "2020-08-12T13:21:57.000+0000",
-            "isDelete": 0
+            "isDelete": null,
+            "nickName": null,
+            "userHead": null
         },
         {
             "commentId": 7,
@@ -54,9 +94,12 @@
             "replyFor": 0,
             "starNum": 0,
             "commentContent": "爱你呀呀呀呀呀",
+            "user": null,
             "replies": [],
             "createTime": "2020-08-12T18:06:59.000+0000",
-            "isDelete": 0
+            "isDelete": null,
+            "nickName": null,
+            "userHead": null
         }
     ]
 }

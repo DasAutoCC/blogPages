@@ -5,7 +5,10 @@ var editor;
 			width  : "100%",
 			height :520,
 			saveHTMLToTextarea : true, 
-			path   : "./editor/lib/"
+			path   : "./editor/lib/",
+			imageUpload : true,
+			imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+			imageUploadURL : "./php/upload.php?test=dfdf"
      });
 	 $.get("./json/login.json",{},function(data){
 	 	if(data.respCode==200){
