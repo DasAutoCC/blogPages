@@ -2,6 +2,9 @@
 *{
 	margin: 0; 
 	padding: 0;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	/* font-family: "黑体"; */
 }
 a{
 	color: #000000;
@@ -16,8 +19,9 @@ html,body{
 }
 /*网页背景*/
 body{
-	background-color: #d1d2d4;
+	background-color: #33CC33;
 	min-height: 900px;
+	background-image: url(../img/email-pattern.png);
 }
 /*开局遮挡div*/
 .index{
@@ -277,11 +281,12 @@ body{
 	min-height: 1000px;
 	width: 1500px;
 	margin: 10px auto;
-	background-color: white;
+	/* background-color: #f4f4f4; */
 	margin-bottom: 20px;
 	border-radius: 8px;
 	overflow-y: hidden;
 	padding-bottom: 10px;
+	border: 2px solid whitesmoke;
 	
 }
 /*内容区域样式，js动态将此类添加到div上*/
@@ -318,7 +323,7 @@ body{
 	float: right;
 	margin-top: 10px;
 	margin-right: 10px;
-	background-color: #d1d2d4;
+	/* background-color:  white; */
 	height: 98%;
 	width: 1170px;
 	min-height: 1000px;
@@ -333,14 +338,17 @@ body{
 	margin: 10px auto;
 	width: 1100px;
 	/* height: 800px; */
-	background-color: white;
+	background-color: #f4f4f4;
 	overflow-x: hidden;
 	border-radius: 8px;
+	border: 8px solid white;
 }
 #listBlog{
 	margin-top: 20px;
 	margin-bottom: 20px;
 	display: block;
+/* 	border: 2px solid gray;
+	border-radius: 2px; */
 }
 
 .contentList{
@@ -410,7 +418,8 @@ body{
 	padding-left: 5px;
 }
 #markDownArea{
-	background-color: #d1d2d4;
+	/* border: 1px solid blueviolet; */
+	background-color: white;
 }
 #commentArea{
 	min-height: 150px;

@@ -1,0 +1,9 @@
+{
+    "respCode": 200,
+    "message": "您已登录",
+    "data": {
+        "userName": "盛世繁华",
+        "userId": "1",
+        "declaration": null
+    }
+}

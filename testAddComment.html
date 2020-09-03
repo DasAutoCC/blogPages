@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="lib/js/jquery.main.js"></script>
+	</head>
+	<body>
+		<a id="1" attr="fuck">111</a>
+		<a id="2">222</a>
+		<a id="3">333</a>
+		<a id="4">444</a>
+		<a id="5">555</a>
+		<a id="6">666</a>
+		<a id="7">777</a>
+		
+		<script>
+			//监听所有类型，用$(this)选择点击的元素
+			$("a").click(function(){
+				var id = $(this).attr("attr");
+				alert(id);
+			})
+		</script>
+	</body>
+</html>

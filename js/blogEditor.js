@@ -1,6 +1,6 @@
 function showMarkdown(blogId){
 	var testEditor;
-	$.get("./json/blog-details.json",{"blogId":blogId},function(data){
+	$.get(restUrl.获取博客详细内容,{"blogId":blogId},function(data){
 		testEditor = editormd.markdownToHTML("markDownArea",{
 			  markdown        : data.data.articleContent ,//+ "\r\n" + $("#append-test").text(),
 			  //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
@@ -20,8 +20,58 @@ function showMarkdown(blogId){
 		$("#markDownArea").attr("name",blogId)
 	})
 }
+//找到一个完整层级回复中所有参与的用户信息，非重复
+function getAllUserDetails(comment){
+	var userSet = new Set();
+	//存入顶级对象信息
+	var currentTopLevelUserDetails = {"userId": comment.commentId,"userHeader":comment.userHead,"userName":comment.nickName};
+	userSet.add(currentTopLevelUserDetails);
+	var currentReplies = comment.replies;
+	if(currentReplies == null){
+		return userSet
+	}
+	for(i=0;i<currentReplies.length;i++){
+		var currentTopLevelUserDetails = {"userId": currentReplies[i].commentId,"userHeader":currentReplies[i].userHead,"userName":currentReplies[i].nickName};
+		userSet.add(currentTopLevelUserDetails);
+	}
+	console.log(userSet);
+	//将其转换为数组返回
+	var userArray = Array.from(userSet);
+	return userArray;
+	
+}
+
+//从给出的数组中找到指定的对象，找不到就返回null
+function findUserDetailsFromList(allUserDeails,needUserId){
+	var result=null;
+	for(i = 0 ; i<allUserDeails.length ; i++){
+		if(allUserDeails[i].userId == needUserId){
+			result=allUserDeails[i];
+			return result;
+		}
+	}
+	return result;
+}
+
+function findTheUser(comment,currentReplyFor){
+	if(comment.commentId == currentReplyFor){
+		return comment.commentUser;
+	}
+	if(comment.replies == null || comment.replies.length<=0){
+		return null;
+	}
+	for(i= 0 ; i<comment.replies.length ; i++){
+		if(comment.replies[i].commentUser == currentReplyFor){
+			return comment.replies[i].commentUser;
+		}
+	}
+	return null;
+}
+
+
 //将数据封装成html然后返回
 function addCommentToDom(comment){
+	var allUserDeails = getAllUserDetails(comment);
 	var html = '';
 	var htp = '<div class="realComment">';
 	var htb = '</div>';
@@ -29,14 +79,19 @@ function addCommentToDom(comment){
 	var repliesHtml = '';
 	var userName=comment.nickName == null ? "游客"  :comment.nickName ;
 	var userContent = comment.commentContent;
-	commentHtml = '<div class="topLevelComment">'+userName+':'+userContent+'</div>';
+	commentHtml = '<div class="topLevelComment allCommentInstance" id ='+comment.commentId+ ' '+'userName='+userName+'>'+userName+':'+userContent+'</div>';
 	html = htp + commentHtml;
 	if(comment.replies == null || comment.replies.length == 0){
 		html = html + htb;
 		return html;
 	}
 	for(var i = 0 ;i < comment.replies.length ;i++){
-		repliesHtml = repliesHtml + '<div class="reply">'+(comment.replies[i].nickName == null ? "游客" : comment.replies[i].nickName)+':'+comment.replies[i].commentContent+'</div>';
+		
+		var currentReplyFor = comment.replies[i].replyFor;
+		var replyForWitchUser = findTheUser(comment,currentReplyFor);
+		var replyForUserDetails = findUserDetailsFromList(allUserDeails,currentReplyFor);
+		var currentUserName = (comment.replies[i].nickName == null ? "游客" : comment.replies[i].nickName)
+		repliesHtml = repliesHtml + '<div class="reply allCommentInstance" id ='+comment.replies[i].commentId+' '+'userName='+currentUserName+'>'+currentUserName+'<span class="huifu">&nbsp回复&nbsp<span>'+replyForUserDetails.userName+':'+comment.replies[i].commentContent+'</div>';
 	}
 	html = html + repliesHtml + htb;
 	return html;
@@ -44,11 +99,15 @@ function addCommentToDom(comment){
 //将数据循环封装成html用于直接向dom中添加
 function showComment(blogId){
 	var html = '';
-	$.get("./json/selComment.json",{"blogId":blogId},function(result){
+	$.get(restUrl.当前博客下的所有评论,{"blogId":blogId},function(result){
 		if(result.respCode != 200){
 			alert(result.message)
+			return null;
 		};
 		var data = result.data;
+		if(data == "当前文章暂无评论"){
+			return null;
+		}
 		for(var i = 0 ;i<data.length ;i++){
 			rep = addCommentToDom(data[i]);
 			html = html + rep;

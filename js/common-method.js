@@ -7,13 +7,14 @@
 //内容区域展示博客列表
 function showContentBolgList(pageNumber){
 	$("#markDownArea").html("<textarea  id='hahahdh' style='display: none;'></textarea>")
+	$("#commentInstence").html("");
 	//先填充内容
 	var data ;
 	var currentList = $(".blogList1");
 	//这里发送ajax请求当前页面的数据，并且将获取到的内容
 	//的id依次修改到列表的每个div内的a标签上，每个a标签的id是博客的id
 	//用来当作获取博客详情的参数
-	$.get("./json/blog-list.json",{"PageNumber":pageNumber},function(back){
+	$.get(restUrl.获取博客列表,{"pageNumber":pageNumber},function(back){
 		data = back.data;
 		for(i = 0 ; i<= 7&&i<=data.length-1;i++){
 			currentList.children().html(data[i].header+"<br>"+"<span style='font-size: 18px;'>"+data[i].preview+"</span>");
@@ -37,6 +38,10 @@ function showContentBolgList(pageNumber){
 }
 //内容区域展示博客详情
 function showContentBolgDetails(BlogID){
+	//回到顶端代码
+	$('body,html').animate({ 
+	    scrollTop:200 
+	},700);
 	//先填充内容
 	//参数为当前点击事件对象的id值，调用此方法的方法会将参数传过来的
 	//得到参数后就直接向服务器请求对应的内容然后填充到div中
@@ -47,10 +52,7 @@ function showContentBolgDetails(BlogID){
 	//这里用editor.md解析数据，然后填充到html
 	showMarkdown(BlogID);
 	showComment(BlogID);
-	//回到顶端代码
-    $('body,html').animate({ 
-        scrollTop:200 
-    },700);
+
 	//再显示内容
 	$("#listBlog").css("display","none");
 	$("#blogDetails").css("display","block");
@@ -105,4 +107,19 @@ function hiddenBolgList(){
 		$("#gasga").html("收起博客列表");
 		isHidden = true;
 	}
+}
+
+function addComment(){
+	var replyFor = $("#write").attr("replyFor");
+	var replyContent = $("#write").val();
+	var currentBlogId = $("#markDownArea").attr("name")
+	alert("将要回复id为："+replyFor+"的评论，当前评论内容为"+replyContent+"当前博客id为："+currentBlogId)
+	var dataForSend = {
+		"blogId" : currentBlogId,
+		"replyFor" : replyFor,
+		"commentContent" : replyContent
+	}
+	$.post(restUrl.添加评论,dataForSend,function(result){
+		
+	})
 }

@@ -26,7 +26,17 @@ $("#intoButtonIntence").click(function(){
 $("#gasga").click(function(){
 	hiddenBolgList();
 });
+//绑定动态添加的.allCommentInstance元素的click事件，点击某条评论后获取到那条评论的id存入div的id中，用来让发送数据的函数获取到
+$("#commentInstence").on("click",".allCommentInstance",function(){
+	var commentIdForUpdate =$(this).attr("id");
+	var commentNameForPlaceHolder =$(this).attr("userName");
+	$("#write").attr("replyFor",commentIdForUpdate);
+	$("#write").attr("placeholder","回复  --->"+commentNameForPlaceHolder);
+})
 
+$("#upcomment").click(function(){
+	addComment();
+})
 
 //博客列表点击事件，点击div时，获取当前div内a标签id值传进"showContentBolgDetails(blogids)"方法内
 $(".blogList1").click(function(){
@@ -75,22 +85,25 @@ $(".pagebutton2").click(function(){
 	togglePage("next");
 });
 
+
+
+
 //初始化主页面
 $(document).ready(function(){
 	
 	//登录人昵称
-	$.get("./json/login.json",{},function(data){
-		if(data.respCode==1){
+	$.get(restUrl.获取用户登陆状态信息,{},function(data){
+		if(data.respCode==200){
 			isLogin = data.data;
+			$("#indexDivSpan1").html(isLogin.userName+",欢迎回来");
+			//渲染用户登录信息
+			$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src='./img/头像.jpg'></div><div id='userNameDiv'>"+isLogin.userName+"</div>");
 		}
-		$("#indexDivSpan1").html(isLogin+",欢迎回来");
-		//渲染用户登录信息
-		$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src='./img/头像.jpg'></div><div id='userNameDiv'>"+isLogin+"</div>");
 	});
 
 	//欢迎语
 	$.get("./json/welcone.json",{},function(data){
-		if(data.respCode==1){
+		if(data.respCode==200){
 			welcome = data.data;
 		}
 		$("#indexDivSpan2").html(welcome);
