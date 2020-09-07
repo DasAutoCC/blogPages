@@ -99,5 +99,3 @@ $(document).ready(function(){
 		init();
 	},10000);
 });
-
-
