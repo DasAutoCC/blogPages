@@ -18,7 +18,7 @@ function addWelcomeMsgToDom(){
 	$.get("./json/welcone.json",{},function(data){
 		if(data.respCode==200){
 			welcome = data.data;
-		}
+		} 
 		$("#indexDivSpan2").html(welcome);
 	}); 
 }
