@@ -1,13 +1,31 @@
-//省略开头动画
-// $(".content").addClass("contentLater");
-// $(".index").remove();
-
-
-
+// 省略开头动画
+$(".content").addClass("contentLater");
+$(".index").remove();
+function addLoginMsgToDom() {
+	//登录人昵称
+	if(isLogin!=""){
+		if(isLogin.respCode==200){
+			$("#indexDivSpan1").html(isLogin.userName+",欢迎回来");
+			//渲染用户登录信息
+			$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src="+isLogin.userHeader+"></div><div id='userNameDiv'>"+isLogin.userName+"</div>");
+			$("#write").attr("placeholder","赠人玫瑰，手有余香")
+		}
+	}
+}
+//向dom中添加欢迎语
+function addWelcomeMsgToDom(){
+	//欢迎语
+	$.get("./json/welcone.json",{},function(data){
+		if(data.respCode==200){
+			welcome = data.data;
+		}
+		$("#indexDivSpan2").html(welcome);
+	});
+}
 //内容区域展示博客列表
-function showContentBolgList(pageNumber){
-	$("#markDownArea").html("<textarea  id='hahahdh' style='display: none;'></textarea>")
-	$("#commentInstence").html("");
+function showContentBolgList(pageNumber,isScroll,scrollTime){
+
+	
 	//先填充内容
 	var data ;
 	var currentList = $(".blogList1");
@@ -15,9 +33,30 @@ function showContentBolgList(pageNumber){
 	//的id依次修改到列表的每个div内的a标签上，每个a标签的id是博客的id
 	//用来当作获取博客详情的参数
 	$.get(restUrl.获取博客列表,{"pageNumber":pageNumber},function(back){
+		if(back.respCode!=200){
+			alert(back.message)
+			return;
+		}
+		// $('body,html').animate({
+		//     scrollTop:200 
+		// },800);
 		data = back.data;
 		for(i = 0 ; i<= 7&&i<=data.length-1;i++){
-			currentList.children().html(data[i].header+"<br>"+"<span style='font-size: 18px;'>"+data[i].preview+"</span>");
+			
+			var createTime = new Date(data[i].createTime).toLocaleString()
+			var ind = createTime.indexOf(" ");
+			var tim = createTime.substring(0,ind);
+			var isTop = '';
+			var updLoc = '';
+			if(data[i].isTop>0){
+				isTop='置顶文章';
+			}
+			if(isLogin!=''){
+				if(isLogin.respCode==200&&isLogin.data.userId==1){
+					var updLoc = "更新此文章"
+				}
+			}
+			currentList.children().html('<div class="contentsTheListContent"> <span style="font-size: 25px;">'+data[i].header+'</span>'+"<br>"+"<span style='font-size: 18px;'>"+data[i].preview+"</span> </div><div class = 'contentsTheListTime'><a href=/upd-article?articleId="+data[i].id+">"+updLoc+"</a> <span class='isTopSpan'>"+isTop+"</span> <span class = 'listDate'>Post："+tim+"</span> </div>");
 			currentList.children().attr("id",data[i].id);
 			currentList = currentList.next();
 		}
@@ -38,10 +77,7 @@ function showContentBolgList(pageNumber){
 }
 //内容区域展示博客详情
 function showContentBolgDetails(BlogID){
-	//回到顶端代码
-	$('body,html').animate({ 
-	    scrollTop:200 
-	},700);
+
 	//先填充内容
 	//参数为当前点击事件对象的id值，调用此方法的方法会将参数传过来的
 	//得到参数后就直接向服务器请求对应的内容然后填充到div中
@@ -56,6 +92,10 @@ function showContentBolgDetails(BlogID){
 	//再显示内容
 	$("#listBlog").css("display","none");
 	$("#blogDetails").css("display","block");
+	//回到顶端代码
+	$('body,html').animate({ 
+	    scrollTop:200 
+	},800);
 }
 //传入参数为用户点击的是上一页还是下一页
 function togglePage(pageForward){
@@ -85,9 +125,6 @@ function togglePage(pageForward){
 	    scrollTop:200 
 	},700);
 }
-
-
-
 //主动隐藏页面遮罩函数
 function init(){
 	$(".index").addClass("hiddenIndex");
@@ -108,7 +145,7 @@ function hiddenBolgList(){
 		isHidden = true;
 	}
 }
-
+//新增评论
 function addComment(){
 	var replyFor = $("#write").attr("replyFor");
 	var replyContent = $("#write").val();
@@ -120,6 +157,21 @@ function addComment(){
 		"commentContent" : replyContent
 	}
 	$.post(restUrl.添加评论,dataForSend,function(result){
+		if(result.respCode == 200){
+			alert("评论已提交，将在过滤后显示，感谢您的支持！")
+		}else{
+			alert(result.message);
+		}
 		
 	})
+}
+function commentChange(){
+	var  writeText= $("#write").val();
+	var commentIdForUpdate =$(this).attr("id");
+	var commentNameForPlaceHolder =$(this).parent().parent().parent().parent().attr("userName");
+	var placeholderMsg = "登陆之后可以进行评论";
+	$("#write").attr("replyFor",null);
+	placeholderMsg = "赠人玫瑰，手有余香"
+	$("#write").attr("placeholder",placeholderMsg);
+	$("#underCommentMsg").text("")
 }

@@ -4,6 +4,7 @@
     "data": {
         "userName": "盛世繁华",
         "userId": "1",
-        "declaration": null
+        "declaration": null,
+		"userHeader": "./img/头像.jpg"
     }
 }

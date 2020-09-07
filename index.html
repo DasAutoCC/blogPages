@@ -39,18 +39,27 @@
 		<div class="test" style="background-image: url(img/04_horse_b_resized_WPS图片.jpg);">
 			<div id="innerTest">
 				<div id="loginArea">
-					<button id="loginButton">登录</button>
+					<a href="/login" class="btn-primary">登录</a>
 					<button id="regButton">注册</button>
 				</div>
-				<span id="text">标题</span><br />
-				<span id="HeaderText">副标题</span>
+				<span id="text">满月照人间</span><br />
+				<span id="HeaderText">-盛世繁花-</span>
 			</div>
 		</div>
 		<!--/主页遮挡头部的div fixed布局，带有动画效果-->
 		
 		
 		<!--导航栏位置，但是没想好要放啥-->
-		<div class="navigationBar"></div>
+		<div class="navigationBar">
+			<div id="userContentOnNaviBar">
+				<div id="userHeaderOnNaviBar"> <img id="userHeaderInstanceOnNaviBar" src="img/头像.jpg" /> </div>
+				<div id="userNameAndDeclarationArea">
+					<div id="userNameAndDeclarationArea-name">盛世繁花</div>
+					<div id="userNameAndDeclarationArea-Declaration">你对生活付出什么，生活就给你什么样的回馈</div>
+				</div>
+			</div>
+			
+		</div>
 		<!--/导航栏位置，但是没想好要放啥-->
 		
 		
@@ -93,35 +102,39 @@
 					
 					<div id="blogDetails">
 						<div class="blogNavigationBar">
-							<div class="blogNavigationBarLeft">返回</div>
+							<div class="blogNavigationBarLeft"><span id="backButton">返回</span> </div>
 							<div class="blogNavigationBarRight"></div>
 						</div>
+						<div id="headerOnContent">
+							<div id="articleHeader"></div>
+							<div id="authorMsgArea">
+							</div>
+						</div>
+						
+						<div id="hrLine"></div>
+						
+						
 						<div class="blogContent" id="markDownArea" >
 							<textarea  id="hahahdh" style="display: none;">###Hello world!</textarea>   
 						</div>
+						
+						<div id="bottomOfContent"></div>
+						
+						<div id="writeArea">
+							<div id="contentsTheWriterAndButton">
+								<div id="contentsTheWrite">
+									<textarea id="write" maxlength="1000" placeholder="登录之后可以进行评论"></textarea>
+								</div>
+								<div id="contentsTheUpCommentButton">
+									<div id="underCommentMsg" onclick="commentChange()"></div>
+									<input type="button" id="upcomment" class="btn btn-primary" value="提交" />
+								</div>
+							</div>
+						</div>
+						
+						
 						<div id="commentArea">
-							<div id="commentInstence">
-								
-				<!-- 			<div class="realComment">
-									<div class="topLevelComment">盛世繁华:牛逼</div>
-									<div class="reply">游客:牛逼啥？</div>
-								</div>
-								
-								<div class="realComment">
-									<div class="topLevelComment">盛世繁华:牛逼</div>
-									<div class="reply">游客:牛逼啥？</div>
-								</div>
-								
-								<div class="realComment">
-									<div class="topLevelComment">盛世繁华:牛逼</div>
-									<div class="reply">游客:牛逼啥？</div>
-								</div> -->
-								
-							</div>
-							<div id="writeArea">
-								<textarea id="write"  placeholder="有什么话想对作者说呢？"></textarea>
-								<button id="upcomment">提交</button>
-							</div>
+							<div id="commentInstence"></div>
 						</div>
 					</div>
 				</div>
@@ -140,7 +153,7 @@
 		
 		
 		
-		<div>copyright</div>
+		<div id="copyrightArea">Copyright© 2019-2020 design-By:盛世繁花 版权所有</div>
 		
 		<!-- 右侧fixed布局div，始终悬浮在右下方-->
 		<div class="right"></div>
@@ -162,8 +175,8 @@
 		<!--页面元素解析完成后执行的脚本-->
 		<script src="js/common-method.js"></script>
 		<script src="js/index.js"></script>
-		
-		//特效
+		<script src="js/MyRouter.js"></script>
+		<!-- //特效 -->
 		<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 	</body>
 </html>
