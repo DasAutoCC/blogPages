@@ -20,7 +20,7 @@ function addWelcomeMsgToDom(){
 			welcome = data.data;
 		}
 		$("#indexDivSpan2").html(welcome);
-	});
+	}); 
 }
 //内容区域展示博客列表
 function showContentBolgList(pageNumber,isScroll,scrollTime){
