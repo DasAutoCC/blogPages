@@ -92,6 +92,7 @@ $(document).ready(function(){
 	addWelcomeMsgToDom();
 	//初始化当前页码为1，将初始化页码传进去，直接显示第一页的博客列表
 	// showContentBolgList(currentPage,false);
+	location.hash="#list?pageNum=1";
 	changePage();
 	//定时进入主页事件
 	setTimeout(function(){
