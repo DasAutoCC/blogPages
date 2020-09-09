@@ -5,9 +5,9 @@ function addLoginMsgToDom() {
 	//登录人昵称
 	if(isLogin!=""){
 		if(isLogin.respCode==200){
-			$("#indexDivSpan1").html(isLogin.userName+",欢迎回来");
+			$("#indexDivSpan1").html(isLogin.data.userName+",欢迎回来");
 			//渲染用户登录信息
-			$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src="+isLogin.userHeader+"></div><div id='userNameDiv'>"+isLogin.userName+"</div>");
+			$("#loginArea").html("<div id='userHeaderDiv'><img id='userHeader' src="+isLogin.data.userHeader+"></div><div id='userNameDiv'>"+isLogin.data.userName+"</div>");
 			$("#write").attr("placeholder","赠人玫瑰，手有余香")
 		}
 	}
